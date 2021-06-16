@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: TestPool
+
+steps:
+- task: Application security testing@2021
+  inputs:
+    projectName: 'azure-devops-plugin-demo'
+    enableProxy: false
+    enableSastScan: true
+    CheckmarxService: 'CxSAST @ 172.35.1.146'
+    fullTeamName: 'CxServer'
+    incScan: false
+    enableDependencyScan: false
